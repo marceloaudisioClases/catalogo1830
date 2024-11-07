@@ -7,7 +7,7 @@ class Productos_model extends CI_Model {
         return $this->db->get("productos")->row_array();       
     }
     public function listado_productos(){
-
+        $this->db->select("*");
 
     }
 }
