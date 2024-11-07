@@ -1,10 +1,6 @@
 <?php
 class Productos_model extends CI_Model {
 
-    public function contar(){
-      
-    }
-
     public function obtener_por_id($id){
         $this->db->select("*");
         $this->db->where("producto_id",$id);
