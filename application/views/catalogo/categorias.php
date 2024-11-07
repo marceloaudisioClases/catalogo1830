@@ -17,7 +17,7 @@
         </thead>
         <tbody>
             <tr>
-            <td>Otto</td>
+            <td>&</td>
             <td>@mdo</td>
             </tr>
         </tbody>

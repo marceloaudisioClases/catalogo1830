@@ -22,7 +22,7 @@ class Categorias_model extends CI_Model {
         $this->db->where("estado",1);
         $this->db->order_by("nombre");
         $this->db->get("nombre");
-        return $this->db->get("*")->result_array();
+        return $this->db->get("nombre")->result_array();
     }
 
 }
