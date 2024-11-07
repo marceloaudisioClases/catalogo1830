@@ -7,7 +7,6 @@ class Productos_model extends CI_Model {
         $this->db->limit(1);
         return $this->db->get("productos")->row_array();       
     }
-
     public function listar(){
         
     }
