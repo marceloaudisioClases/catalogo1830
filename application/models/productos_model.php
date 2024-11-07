@@ -14,7 +14,7 @@ class Productos_model extends CI_Model {
     public function pepon(array $data){
     }
 
-    public function obtener_por_id_excluir($id){
-        
+    public function pepe($id){
+
     }
 }
