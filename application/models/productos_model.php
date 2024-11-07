@@ -2,7 +2,7 @@
 class Productos_model extends CI_Model {
 
     public function contar(){
-        
+        $this->db->select("*");
     }
 
     public function obtener_por_id($id){
