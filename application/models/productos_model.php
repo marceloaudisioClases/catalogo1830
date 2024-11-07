@@ -6,8 +6,11 @@ class Productos_model extends CI_Model {
         $this->db->limit(1);
         return $this->db->get("productos")->row_array();       
     }
-    public function listado_productos(){
-        $this->db->select("nombre");
+    public function listado_productos($nombre){
+        $this->db->select("*");
+        $this->db->where("nombre",$nombre);
+        $this->db->limit(1);
+        return $this->db->get("productos")->row_array(); 
 
     }
 }
