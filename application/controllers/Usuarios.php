@@ -8,6 +8,6 @@ class Usuarios extends CI_Controller {
 		$datos=array();
 		$this->load->model("usuarios_model");
 		$datos["usuarios"] = $this->usuarios_model->obtener_por_id();
-		$this->load->view('catalogo/principal',$datos);
+		$this->load->view('catalogo/usuarios',$datos);
 	}
 }
