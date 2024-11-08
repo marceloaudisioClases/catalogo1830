@@ -18,11 +18,8 @@ class Categorias_model extends CI_Model {
     }
 
     public function listado_categoria(){
-        $this->db->select("categorias");
-        $this->db->where("estado",1);
-        $this->db->order_by("nombre");
-        $this->db->get("nombre");
-        return $this->db->get("nombre")->result_array();
+        $query = $this->db->get("categorias");
+        return $query->result_array();
     }
 
-}
+    }

@@ -8,21 +8,35 @@
   </head>
   <body>
     <h1 class="text-center">Categorias disponibles:</h1>
-    <table class="table">
-        <thead>
-            <tr>
-            <th scope="col">Nombre de categoria</th>
-            <th scope="col">Estado</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-            <td>&</td>
-            <td>@mdo</td>
-            </tr>
-        </tbody>
-    </table>
-
+    <div class="container">
+      <div class="row">
+        <div class="col-4 offset-4">
+          <div class="card">
+            <div class="card-body">
+                <table cellpading="5" cellspacing="5">
+                  <thead>
+                      <tr>
+                      <th>Nombre de categoria&nbsp;&nbsp;&nbsp;</th>
+                      <th>Estado</th>
+                      </tr>
+                  </thead>
+                  <?php if($categorias>0){ ?>
+                  <?php foreach ($categorias as $c){  ?>
+                  <tbody>
+                      <tr>
+                      <td><?php echo $c["nombre"]; ?></td>
+                      <td><?php echo $c["estado"]; ?></td>
+                      </tr>
+                  </tbody>
+                  <?php } ?>
+                  <?php } ?>
+                </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+   
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
   </body>
 </html>
