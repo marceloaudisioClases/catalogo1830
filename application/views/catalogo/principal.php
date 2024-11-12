@@ -17,7 +17,7 @@
               <br>
               <div class="list-group">
                 <?php foreach($categorias as $c) { ?>
-                  <a href="#" class="list-group-item list-group-item-action"><?php echo $c["nombre"];?></a>
+                  <a href="#" class="list-group-item list-group-item-action"><?php echo $c["icono"];?> <?php echo $c["nombre"];?></a>
                 <?php } ?>
               </div>
             </div>

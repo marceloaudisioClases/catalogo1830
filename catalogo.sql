@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 05-11-2024 a las 23:18:08
+-- Tiempo de generación: 12-11-2024 a las 23:48:18
 -- Versión del servidor: 10.4.27-MariaDB
 -- Versión de PHP: 7.4.33
 
@@ -30,6 +30,7 @@ SET time_zone = "+00:00";
 CREATE TABLE `categorias` (
   `categoria_id` int(11) NOT NULL,
   `nombre` text NOT NULL,
+  `icono` text NOT NULL DEFAULT '<i class="bi bi-box"></i>',
   `orden` int(11) DEFAULT NULL,
   `estado` tinyint(4) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -38,8 +39,8 @@ CREATE TABLE `categorias` (
 -- Volcado de datos para la tabla `categorias`
 --
 
-INSERT INTO `categorias` (`categoria_id`, `nombre`, `orden`, `estado`) VALUES
-(1, 'Varios', NULL, 1);
+INSERT INTO `categorias` (`categoria_id`, `nombre`, `icono`, `orden`, `estado`) VALUES
+(1, 'Varios', '<i class=\"bi bi-box\"></i>', NULL, 1);
 
 -- --------------------------------------------------------
 
@@ -102,8 +103,8 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`usuario_id`, `email`, `apellido`, `nombre`, `usuario`, `password`, `creado`, `estado`, `rol_id`, `ult_login`) VALUES
-(1, 'admin@hilet.com', 'Administrador', 'Sistema', 'admin', '1234', '2024-10-24 18:39:32', 1, 1, '2024-10-29 19:35:07'),
-(2, 'cliente@hilet.com', 'Cliente', 'Compra', 'cliente', '1234', '2024-10-29 19:16:17', 1, 3, NULL);
+(1, 'admin@hilet.com', 'Administrador', 'Sistema', 'admin', '1234', '2024-10-24 18:39:32', 1, 1, '2024-11-12 19:22:24'),
+(2, 'cliente@hilet.com', 'Cliente', 'Compra', 'cliente', '1234', '2024-10-29 19:16:17', 1, 3, '2024-11-12 19:47:22');
 
 --
 -- Índices para tablas volcadas
