@@ -17,4 +17,9 @@ class Categorias_model extends CI_Model {
         return $this->db->get("categorias")->row_array();       
     }
 
-}
+    public function listado_categoria(){
+        $query = $this->db->get("categorias");
+        return $query->result_array();
+    }
+
+    }
