@@ -42,4 +42,10 @@ class Usuarios_model extends CI_Model {
         $this->db->where("usuario_id",$usuario_id);
         $this->db->update("usuarios");
     }
+    public function listar(){
+        $this->db->select("*");
+        $this->db->order_by("usuario_id");
+        $this->db->order_by("nombre");
+        return $this->db->get("usuarios")->result_array();
+    }
 }

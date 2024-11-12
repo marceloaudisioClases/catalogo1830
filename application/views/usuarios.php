@@ -14,11 +14,13 @@
     <div class="container">
         <div class="row">
             <div class="col">
-                <div class="card">
-                    <div class="card-body">
+            <h2>Lista de Usuarios:</h2>
+                        <div class="list-group">
+                <?php foreach($usuarios as $u) { ?>
+                  <a href="#" class="list-group-item list-group-item-action"><?php echo $u["usuario"];?></a>
+                <?php } ?>
+                </div>
 
-                </div>
-                </div>
             </div>
         </div>
     </div>
