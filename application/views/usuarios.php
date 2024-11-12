@@ -14,7 +14,7 @@
     <div class="container">
         <div class="row">
             <div class="col">
-            <h2>Lista de Usuarios:</h2>
+            <h1 class="display-1">Lista de Usuarios:</h1>
                         <div class="list-group">
                 <?php foreach($usuarios as $u) { ?>
                   <a href="#" class="list-group-item list-group-item-action"><?php echo $u["usuario"];?></a>
