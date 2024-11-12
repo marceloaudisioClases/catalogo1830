@@ -7,7 +7,7 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" href="#"><i class="bi bi-house-fill"></i> Inicio</a>
+          <a class="nav-link active" href="<?php echo site_url("principal"); ?>"><i class="bi bi-house-fill"></i> Inicio</a>
         </li>
         <?php
         if($this->session->userdata("rol_id")==ROL_ADMIN){
@@ -17,7 +17,7 @@
             <i class="bi bi-gear-fill"></i> Administración
             </a>
             <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#"><i class="bi bi-people-fill"></i> Usuarios</a></li>
+                <li><a class="dropdown-item" href="<?php echo site_url("usuarios"); ?>"><i class="bi bi-people-fill"></i> Usuarios</a></li>
                 <li><a class="dropdown-item" href="#"><i class="bi bi-person-fill-lock"></i> Roles</a></li>
             </ul>
             </li>
