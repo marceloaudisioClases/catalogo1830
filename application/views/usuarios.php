@@ -17,7 +17,20 @@
             <h1 class="display-1">Lista de Usuarios:</h1>
                         <div class="list-group">
                 <?php foreach($usuarios as $u) { ?>
-                  <a href="#" class="list-group-item list-group-item-action"><?php echo $u["usuario"];?></a>
+                  
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="bi bi-person-fill-lock"></i> <?php echo $u["usuario"];?>
+            </a>
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#"></i><b>Email: </b><?php echo $u["email"]; ?></a></li>
+                <li><a class="dropdown-item" href="#"></i><b>Nombre: </b><?php echo $u["nombre"]; ?></a></li>
+                <li><a class="dropdown-item" href="#"></i><b>Apellido: </b><?php echo $u["apellido"]; ?></a></li>
+                <li><a class="dropdown-item" href="#"></i><b>Contraseña: </b><?php echo $u["password"]; ?></a></li>
+                <li><a class="dropdown-item" href="#"></i><b>Creado: </b><?php echo $u["creado"]; ?></a></li>
+                <li><a class="dropdown-item" href="#"></i><b>Ultimo ingreso: </b><?php echo $u["ult_login"]; ?></a></li>
+            </ul>
+            </li>
+                  <br>
                 <?php } ?>
                 </div>
 
