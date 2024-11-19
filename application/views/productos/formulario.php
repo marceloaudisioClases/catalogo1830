@@ -33,7 +33,7 @@
                         <div class="mb-3">
                             <label for="categoria_id">Categoría:</label>
                             <select id="categoria_id" name="categoria_id">
-                                <option selected>Selecciones una categoria</option>
+                                <option selected>Seleccione una categoria</option>
                                 <?php foreach($categorias as $c) { ?>
                                   <option value="<?php echo $c["categoria_id"]?>"><?php echo $c["nombre"]?></option>
                                 <?php } ?>
