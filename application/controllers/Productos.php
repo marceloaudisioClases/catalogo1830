@@ -9,6 +9,7 @@ class Productos extends CI_Controller {
 			$this->session->set_flashdata("OP","PROHIBIDO");
 			redirect("auth/login");
 		}
+		$this->load->model("productos_model");
 	}
 	public function index()
 	{
@@ -32,6 +33,14 @@ class Productos extends CI_Controller {
 		$datos["categorias"]=$this->categorias_model->listar();
 		$this->load->view('productos/formulario',$datos);
 	  } else {
+		$data=array();
+		$data['nombre']= set_value('nombre');
+		$data['descripcion']= set_value('descripcion');
+		$data['categoria_id']= set_value('categoria_id');
+		$data['stock_actual']= set_value('stock_actual');
+		$data['stock_min']= set_value('stock_min');
+		$data['costo']= set_value('costo');
+
 	    echo "Producto guardado exitosamente.";
 	  }
   }
