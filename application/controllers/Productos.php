@@ -27,7 +27,7 @@ class Productos extends CI_Controller {
         $this->form_validation->set_rules('categoria_id', 'Categoría', 'required|integer');
         $this->form_validation->set_rules('stock_actual', 'Stock Actual', 'required|integer');
         $this->form_validation->set_rules('stock_min', 'Stock Mínimo', 'required|integer');
-        $this->form_validation->set_rules('costo', 'Costo', 'required|decimal');
+        $this->form_validation->set_rules('costo', 'Costo', 'required|integer');
 
       if ($this->form_validation->run() == FALSE) {
 		$datos["categorias"]=$this->categorias_model->listar();

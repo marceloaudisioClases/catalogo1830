@@ -22,12 +22,12 @@
                         <form action="<?php echo site_url ("productos/alta"); ?>" method="post">
                         <div class="mb-3">
                             <label for="nombre">Nombre:</label>
-                            <input type="text" id="nombre" name="nombre" ><br><br>
+                            <input type="text" id="nombre" name="nombre" value="<?php echo set_value("nombre"); ?>"><br><br>
                        </div>
-                       
+
                        <div class="mb-3">
                             <label for="descripcion">Descripción:</label>
-                            <textarea id="descripcion" name="descripcion"></textarea><br><br>
+                            <textarea id="descripcion" name="descripcion" rows="3"><?php echo set_value("descripcion"); ?></textarea><br><br>
                         </div>
 
                         <div class="mb-3">
@@ -42,19 +42,19 @@
                            </div>
                            <div class="mb-3">
                             <label for="stock_actual">Stock Actual:</label>
-                            <input type="number" id="stock_actual" name="stock_actual"><br><br>
+                            <input type="number" id="stock_actual" name="stock_actual" value="<?php echo set_value("stock_actual"); ?>"><br><br>
                              </div>
 
                              <div class="mb-3">
                                 <label for="stock_min">Stock Mínimo:</label>
-                                <input type="number" id="stock_min" name="stock_min"><br><br>
+                                <input type="number" id="stock_min" name="stock_min" value="<?php echo set_value("stock_min"); ?>"><br><br>
                             </div>
 
                             <div class="mb-3">
                                 <label for="costo">Costo:</label>
                                 <div class="input-group mb-3">
                                 <span class="input-group-text">$</span>
-                                <input type="number" step="0.01" id="costo" name="costo"><br><br>
+                                <input type="number" step="0.01" id="costo" name="costo" value="<?php echo set_value("costo"); ?>"><br><br>
                               </div>
                             </div>
                             <button type="submit">Enviar</button>
