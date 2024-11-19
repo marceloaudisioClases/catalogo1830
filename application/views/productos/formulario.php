@@ -21,26 +21,26 @@
                     <div class="card-body">
                         <form action="<?php echo site_url ("productos/alta"); ?>" method="post">
                             <label for="nombre">Nombre:</label>
-                            <input type="text" id="nombre" name="nombre" required><br><br>
+                            <input type="text" id="nombre" name="nombre" ><br><br>
 
                             <label for="descripcion">Descripción:</label>
-                            <textarea id="descripcion" name="descripcion" required></textarea><br><br>
+                            <textarea id="descripcion" name="descripcion"></textarea><br><br>
 
                             <label for="categoria_id">Categoría:</label>
-                            <select id="categoria_id" name="categoria_id" required>
+                            <select id="categoria_id" name="categoria_id">
                                 <option value="1">Categoría 1</option>
                                 <option value="2">Categoría 2</option>
                                 <option value="3">Categoría 3</option>
                            </select><br><br>
 
                             <label for="stock_actual">Stock Actual:</label>
-                            <input type="number" id="stock_actual" name="stock_actual" required><br><br>
+                            <input type="number" id="stock_actual" name="stock_actual"><br><br>
 
                             <label for="stock_min">Stock Mínimo:</label>
-                            <input type="number" id="stock_min" name="stock_min" required><br><br>
+                            <input type="number" id="stock_min" name="stock_min"><br><br>
 
                             <label for="costo">Costo:</label>
-                            <input type="number" step="0.01" id="costo" name="costo" required><br><br>
+                            <input type="number" step="0.01" id="costo" name="costo"><br><br>
 
                             <button type="submit">Enviar</button>
                        </form>
