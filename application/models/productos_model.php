@@ -2,7 +2,8 @@
 class Productos_model extends CI_Model {
 
     public function nuevo($data) {
-        return $this->db->insert('productos', $data);
+       $this->db->insert('productos', $data);
+       return $this->db->insert_id();
     }
 
     public function listar() {
