@@ -41,6 +41,8 @@ class Productos extends CI_Controller {
 		$data['stock_min']= set_value('stock_min');
 		$data['costo']= set_value('costo');
 
+		$this->productos_model->nuevo($data);
+
 	    echo "Producto guardado exitosamente.";
 	  }
   }
