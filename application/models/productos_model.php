@@ -1,16 +1,18 @@
 <?php
 class Productos_model extends CI_Model {
-    public function obtener_por_id($id){
-        $this->db->select("*");
-        $this->db->where("producto_id",$id);
-        $this->db->limit(1);
-        return $this->db->get("productos")->row_array();       
-    }
-    public function listado_productos($nombre){
-        $this->db->select("*");
-        $this->db->where("nombre",$nombre);
-        $this->db->limit(1);
-        return $this->db->get("productos")->row_array(); 
 
+    public function nuevo($data) {
+        return $this->db->insert('productos', $data);
+    }
+
+    public function listar() {
+        $query = $this->db->get('productos');
+        return $query->result_array();
+    }
+
+    public function obtener_por_id($id) {
+        $query = $this->db->get_where('productos', array('id' => $id));
+        return $query->row_array();
     }
 }
+?>

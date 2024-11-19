@@ -16,6 +16,9 @@ class Productos extends CI_Controller {
 	}
 
 	public function alta(){
+		$datos=array();
+
+		$this->load->model("categorias_model");
 		$this->load->library('form_validation');
 
         $this->form_validation->set_rules('nombre', 'Nombre', 'required|trim');
@@ -26,7 +29,8 @@ class Productos extends CI_Controller {
         $this->form_validation->set_rules('costo', 'Costo', 'required|decimal');
 
       if ($this->form_validation->run() == FALSE) {
-		$this->load->view('productos/formulario');
+		$datos["categorias"]=$this->categorias_model->listar();
+		$this->load->view('productos/formulario',$datos);
 	  } else {
 	    echo "Producto guardado exitosamente.";
 	  }
