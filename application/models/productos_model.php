@@ -1,16 +1,16 @@
 <?php
+defined('BASEPATH') OR exit('No direct script access allowed');
 class Productos_model extends CI_Model {
-
-    public function contar(){
-        
+    public function nuevo($data) {
+        $this->db->insert('productos', $data);
+        return $this->db->insert_id();
     }
-
-    public function obtener_por_id($id){
-        $this->db->select("*");
-        $this->db->where("producto_id",$id);
-        $this->db->limit(1);
-        return $this->db->get("productos")->row_array();       
+    public function listar() {
+        $query = $this->db->get('productos');
+        return $query->result_array();
     }
-    public function pepon(array $data){
+    public function obtener_por_id($id) {
+        $query = $this->db->get_where('productos', array('id' => $id));
+        return $query->row_array();
     }
 }
