@@ -54,7 +54,7 @@
                                 <label for="costo">Costo:</label>
                                 <div class="input-group mb-3">
                                 <span class="input-group-text">$</span>
-                                <input type="number" step="0.01" id="costo" name="costo" value="<?php echo set_value("costo"); ?>"><br><br>
+                                <input type="number" id="costo" name="costo" value="<?php echo set_value("costo"); ?>"><br><br>
                               </div>
                             </div>
                             <button type="submit">Enviar</button>
