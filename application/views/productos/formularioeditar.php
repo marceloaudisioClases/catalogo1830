@@ -16,6 +16,17 @@
             <div class="col">
               <?php if ($producto) { ?>
                 <h1>Editar producto: <?php echo str_pad($producto("producto_id"),5,"0",STR_PAD_LEFT);?></h1>
+                <?php 
+                switch ($this->session->flashdata>('MSJ')){
+                    case "Actualizado":
+                    ?>
+                      <div class="alert alert-sucess">
+                        Articulo Actualizado!
+                      </div>
+                    <?php
+                    break;
+                }
+                ?>
                 <?php echo validation_errors(); ?>
                 <div class="card">
                     <div class="card-body">
