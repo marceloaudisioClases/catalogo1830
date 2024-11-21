@@ -79,7 +79,8 @@ class Productos extends CI_Controller {
 	$data['costo']= set_value('costo');
 
 	$id=$this->productos_model->actualizar($producto_id,$data);
-	redirect('productos/editar/'. $id);
+	$this->session->set_flashdata('MSJ','Actualizado');
+	redirect('productos/editar/'. $producto_id);
   }
 }
 }

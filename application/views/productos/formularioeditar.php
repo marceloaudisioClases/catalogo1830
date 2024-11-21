@@ -19,7 +19,7 @@
                 <?php echo validation_errors(); ?>
                 <div class="card">
                     <div class="card-body">
-                        <form action="<?php echo site_url ("productos/editar/",$producto["producto_id"]); ?>" method="post">
+                        <form method="post" action="<?php echo site_url ("productos/editar/",$producto["producto_id"]); ?>" >
                         <div class="mb-3">
                             <label for="nombre">Nombre:</label>
                             <input type="text" id="nombre" name="nombre" value="<?php echo set_value("nombre",$producto["nombre"]); ?>"><br><br>
