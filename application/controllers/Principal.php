@@ -12,7 +12,10 @@ class Principal extends CI_Controller {
 	}
 	public function index()
 	{
-		$this->load->view('principal');
+		$datos= array();
+		$this->load->model("productos_model");
+		$datos["total_productos"]=$this->productos_model->contar();
+		$this->load->view('principal',$datos);
 	}
 	public function micuenta()
 	{

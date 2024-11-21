@@ -16,6 +16,7 @@
             <div class="col">
               
                 <h1 class="display-1">Bienvenido</h1>
+                <h4>Total de Productos en catalogo: <b><?php echo $total_productos; ?></b></h4>
             </div>
         </div>
     </div>
