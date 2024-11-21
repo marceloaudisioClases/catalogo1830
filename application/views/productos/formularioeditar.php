@@ -19,44 +19,44 @@
                 <?php echo validation_errors(); ?>
                 <div class="card">
                     <div class="card-body">
-                        <form action="<?php echo site_url ("productos/alta"); ?>" method="post">
+                        <form action="<?php echo site_url ("productos/editar/",$producto["producto_id"]); ?>" method="post">
                         <div class="mb-3">
                             <label for="nombre">Nombre:</label>
-                            <input type="text" id="nombre" name="nombre" value="<?php echo set_value("nombre"); ?>"><br><br>
+                            <input type="text" id="nombre" name="nombre" value="<?php echo set_value("nombre",$producto["nombre"]); ?>"><br><br>
                        </div>
                        <div class="mb-3">
                             <label for="descripcion">Descripción:</label>
-                            <textarea id="descripcion" name="descripcion" rows="3"><?php echo set_value("descripcion"); ?></textarea><br><br>
+                            <textarea id="descripcion" name="descripcion" rows="3"><?php echo set_value("descripcion",$producto["descripcion"]); ?></textarea><br><br>
                         </div>
                             <div class="mb-3">
                                 <label for="categoria_id">Categoría:</label>
                                 <select id="categoria_id" name="categoria_id">
                                     <option selected>Seleccione una categoria</option>
                                     <?php foreach($categorias as $c) { ?>
-                                    <option value="<?php echo $c["categoria_id"]?>"><?php echo $c["nombre"]?></option>
+                                    <option value="<?php echo $c["categoria_id"]?>" <?php echo set_select('categoria_id', $c["categoria_id"], ($producto["categoria_id"]==$c["categoria_id"])); ?>><?php echo $c["nombre"]?></option>
                                     <?php } ?>
                             </select><br><br>
                             </div>
                                <div class="mb-3">
                                 <label for="stock_actual">Stock Actual:</label>
-                                <input type="number" id="stock_actual" name="stock_actual" value="<?php echo set_value("stock_actual"); ?>"><br><br>
+                                <input type="number" id="stock_actual" name="stock_actual" value="<?php echo set_value("stock_actual",$producto["stock_actual"]); ?>"><br><br>
                                 </div>
                              <div class="mb-3">
                                 <label for="stock_min">Stock Mínimo:</label>
-                                <input type="number" id="stock_min" name="stock_min" value="<?php echo set_value("stock_min"); ?>"><br><br>
+                                <input type="number" id="stock_min" name="stock_min" value="<?php echo set_value("stock_min",$producto["stock_min"]); ?>"><br><br>
                             </div>
                             <div class="mb-3">
                                 <label for="costo">Costo:</label>
                                 <div class="input-group mb-3">
                                 <span class="input-group-text">$</span>
-                                <input type="number" id="costo" name="costo" value="<?php echo set_value("costo"); ?>"><br><br>
+                                <input type="number" id="costo" name="costo" value="<?php echo set_value("costo",intval($producto["costo"])); ?>"><br><br>
                               </div>
                             </div>
                             <button type="submit">Enviar</button>
                        </form>
                 </div>
-                </div>
-            </div>
+             </div>
+          </div>
             <?php }else{ ?>
               <br>
               <div class="alert alert.info">

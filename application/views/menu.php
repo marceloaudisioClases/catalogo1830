@@ -19,6 +19,8 @@
             <ul class="dropdown-menu">
                 <li><a class="dropdown-item" href="#"><i class="bi bi-people-fill"></i> Usuarios</a></li>
                 <li><a class="dropdown-item" href="#"><i class="bi bi-person-fill-lock"></i> Roles</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="<?php echo site_url("productos"); ?>"><i class="bi bi-bag"></i> Productos</a></li>
             </ul>
             </li>
         <?php 
@@ -33,7 +35,6 @@
             <ul class="dropdown-menu">
                 <li><a class="dropdown-item" href="<?php echo site_url("principal/micuenta"); ?>"><i class="bi bi-briefcase-fill"></i> Mi cuenta</a></li>
                 <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="<?php echo site_url("productos"); ?>"><i class="bi bi-bag"></i> Productos</a></li>
                 <li><a class="dropdown-item" href="<?php echo site_url("auth/logout"); ?>"><i class="bi bi-door-open-fill"></i> Salir</a></li>
             </ul>
             </li>

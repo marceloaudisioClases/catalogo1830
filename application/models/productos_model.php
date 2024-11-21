@@ -6,6 +6,12 @@ class Productos_model extends CI_Model {
        return $this->db->insert_id();
     }
 
+    public function actualizar($id,$data){
+        $this->db->where('producto_id', $id);
+        $this->db->update('productos', $data);
+        return $this->db->affected_rows();
+    }
+
     public function listar() {
         $query = $this->db->get('productos');
         return $query->result_array();

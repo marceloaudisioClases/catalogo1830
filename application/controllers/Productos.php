@@ -78,7 +78,7 @@ class Productos extends CI_Controller {
 	$data['stock_min']= set_value('stock_min');
 	$data['costo']= set_value('costo');
 
-	$id=$this->productos_model->nuevo($data);
+	$id=$this->productos_model->actualizar($producto_id,$data);
 	redirect('productos/editar/'. $id);
   }
 }
