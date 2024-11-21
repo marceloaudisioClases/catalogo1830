@@ -33,7 +33,7 @@
                             <select class="form-select" id="categoria_id" name="categoria_id">
                                 <option selected>Seleccione una categoría</option>
                                 <?php foreach($categorias as $c){ ?>
-                                    <option value="<?php echo $c["categoria_id"]; ?>"><?php echo $c["nombre"]; ?></option>
+                                    <option value="<?php echo $c["categoria_id"]; ?>" <?php echo  set_select('categoria_id', $c["categoria_id"]); ?>><?php echo $c["nombre"]; ?></option>
                                 <?php } ?>
                             </select>
                         </div>

@@ -48,6 +48,15 @@ class Productos extends CI_Controller {
 	public function editar($id=false) {
 		$datos=array();
 
+		if($id!=false){
+			$producto_id=intval($id);
+			$datos["producto"]=$this->productos_model->obtener_por_id($producto_id);
+		}else{
+			$datos["producto"]=false;
+		}
+
+
+
 		$this->load->model("categorias_model");
 		$this->load->library('form_validation');
 	
@@ -70,8 +79,9 @@ class Productos extends CI_Controller {
 			$data['stock_min']= set_value('stock_min');
 			$data['costo']= set_value('costo');
 
-			$id=$this->productos_model->nuevo($data);
-			redirect("productos/editar/".$id);
+			$id=$this->productos_model->actualizar($producto_id,$data);
+			$this->session->set_flashdata('MSJ','Actualizado');
+			redirect("productos/editar/".$producto_id);
 		}
 	}
 }
