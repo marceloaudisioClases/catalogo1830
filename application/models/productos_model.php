@@ -12,7 +12,7 @@ class Productos_model extends CI_Model {
     }
 
     public function obtener_por_id($id) {
-        $query = $this->db->get_where('productos', array('id' => $id));
+        $query = $this->db->get_where('productos', array('producto_id' => $id));
         return $query->row_array();
     }
 }

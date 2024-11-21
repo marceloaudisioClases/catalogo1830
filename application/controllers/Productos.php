@@ -49,6 +49,13 @@ class Productos extends CI_Controller {
   public function editar($id=false){
 	$datos=array();
 
+	if($id=false){
+		$producto_id=intval($id);
+		$datos["producto"]=$this->productos_model->obtener_por_id($producto_id);
+	}else {
+		$datos["producto"]=false;
+	}
+
 	$this->load->model("categorias_model");
 	$this->load->library('form_validation');
 

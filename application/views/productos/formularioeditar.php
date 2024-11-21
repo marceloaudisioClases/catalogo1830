@@ -14,8 +14,8 @@
     <div class="container">
         <div class="row">
             <div class="col">
-              
-                <h1>Alta de Producto:</h1>
+              <?php if ($producto) { ?>
+                <h1>Editar producto: <?php echo str_pad($producto("producto_id"),5,"0",STR_PAD_LEFT);?></h1>
                 <?php echo validation_errors(); ?>
                 <div class="card">
                     <div class="card-body">
@@ -57,6 +57,12 @@
                 </div>
                 </div>
             </div>
+            <?php }else{ ?>
+              <br>
+              <div class="alert alert.info">
+                  El articulo no existe!
+              </div>
+            <?php } ?>
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>

@@ -23,7 +23,7 @@
                         <div class="mb-3">
                             <label for="nombre">Nombre:</label>
                             <input type="text" id="nombre" name="nombre" value="<?php echo set_value("nombre"); ?>"><br><br>
-                       </div>
+                            </div>
                        <div class="mb-3">
                             <label for="descripcion">Descripción:</label>
                             <textarea id="descripcion" name="descripcion" rows="3"><?php echo set_value("descripcion"); ?></textarea><br><br>
@@ -52,7 +52,7 @@
                                 <input type="number" id="costo" name="costo" value="<?php echo set_value("costo"); ?>"><br><br>
                               </div>
                             </div>
-                            <button type="submit">Enviar</button>
+                            <button type="submit">Guardar</button>
                        </form>
                 </div>
                 </div>
