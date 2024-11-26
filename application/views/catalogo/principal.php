@@ -16,14 +16,46 @@
             <div class="col-2">
               <br>
               <div class="list-group">
+                <a href="<?php echo site_url("catalogo"); ?>" class="list-group-item list-group-item-action active">
+                  <i class="bi bi-house-fill"></i> Inicio
+                </a>
                 <?php foreach($categorias as $c) { ?>
-                  <a href="#" class="list-group-item list-group-item-action"><?php echo $c["icono"];?> <?php echo $c["nombre"];?></a>
+                  <a href="<?php echo site_url("catalogo/categoria/".$c["categoria_id"]); ?>" class="list-group-item list-group-item-action"><?php echo $c["icono"];?> <?php echo $c["nombre"];?></a>
                 <?php } ?>
               </div>
             </div>
-            <div class="col-10">
-              
-                <h1 class="display-1">Catalogo</h1>
+            <div class="col-10 mt-4">
+                <?php if($categoria_id==0){ ?>
+                  <h1 class="display-3"> Portada</h1>
+                <?php }else{ ?>
+                  <h1 class="display-3"> <?php echo $categoria_seleccionada["icono"]; ?> <?php echo $categoria_seleccionada["nombre"]; ?></h1>
+                <?php } ?>
+                <br>
+                <?php if($productos){ ?>
+                    <table class="table">
+                        <tbody>
+                          <?php foreach($productos as $p){ ?>
+                            <tr>
+                              <td scope="row" class="col-sm-1">
+                                <?php if(file_exists(FCPATH.DIRECTORY_SEPARATOR."img".DIRECTORY_SEPARATOR.$p["producto_id"].".png")){ ?>
+                                  <img src="<?php echo base_url("img/".$p["producto_id"].".png")?>" class="img-fluid">
+                                <?php }else{ ?>	
+                                  <img src="<?php echo base_url("img/sin-imagen.png")?>" class="img-fluid">
+                                <?php } ?>
+                              </td>
+                              <td><?=str_pad($p["producto_id"],5,"0",STR_PAD_LEFT)?> - <?=$p["nombre"]?></td>
+                              <td class="text-end col-sm-2"><b>$<?=$p["costo"]?></b></td>
+                            </tr>
+                          <?php } ?>
+                        </tbody>
+                    </table>
+                <?php }else{ ?>
+                  <?php if($categoria_id>0){ ?>
+                      <div class="alert alert-info">
+                          No hay productos en esta categoría
+                      </div>
+                  <?php } ?>
+                <?php } ?>
             </div>
         </div>
     </div>
