@@ -16,5 +16,4 @@ class Categorias_model extends CI_Model {
         $this->db->limit(1);
         return $this->db->get("categorias")->row_array();       
     }
-
 }

@@ -1,6 +1,11 @@
 <?php
 class Productos_model extends CI_Model {
+    
+    var $categoria_id=false;
 
+    public function set_categoria($categoria_id=false){
+        $this->categoria_id=$categoria_id;
+    }
     public function nuevo($data) {
        $this->db->insert('productos', $data);
        return $this->db->insert_id();
@@ -13,6 +18,9 @@ class Productos_model extends CI_Model {
     }
 
     public function listar() {
+        if ($this->categoria_id!=false) {
+            $this->db->where('categoria_id', $this->categoria_id);
+        }
         $query = $this->db->get('productos');
         return $query->result_array();
     }
@@ -25,5 +33,6 @@ class Productos_model extends CI_Model {
     public function contar(){
         return $this->db->count_all("productos");
     }
+
 }
 ?>
