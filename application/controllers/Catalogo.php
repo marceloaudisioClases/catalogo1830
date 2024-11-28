@@ -56,4 +56,8 @@ class Catalogo extends CI_Controller {
 			redirect("catalogo");
 		}
 	}
+	public function ver($producto_id){
+	$ver=$this->productos_model->obtener_por_id( $producto_id );
+	$this->load->view("catalogo/ver",$ver);
+	}
 }

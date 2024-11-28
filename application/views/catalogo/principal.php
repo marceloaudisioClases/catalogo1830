@@ -70,7 +70,7 @@
                               </td>
                               <td>
                                 <?=str_pad($p["producto_id"],5,"0",STR_PAD_LEFT)?> - <?=$p["nombre"]?>
-                                <br><a href="#" class="btn btn-outline-primary btn-sm">+ Info</a>
+                                <br><a href="<?=site_url("catalogo/ver/".$p["producto_id"])?>" class="btn btn-outline-primary btn-sm">+ Info</a>
                               </td>
                               <td class="text-end col-sm-2"><b>$<?=$p["costo"]?></b></td>
                             </tr>

@@ -3,6 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Productos_model extends CI_Model {
     var $categoria_id=false;
     var $buscar=false;
+    var $producto_id=false;
     public function set_categoria($categoria_id=false){
         $this->categoria_id=$categoria_id;
     }
