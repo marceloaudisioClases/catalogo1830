@@ -19,16 +19,35 @@
                  <a href="<?php echo site_url("catalogo")?>" class="list-group-item list-group-item-action active">
                   <i class="bi bi-house-fill"></i> Inicio
                 </a>
-                <?php foreach($categorias as $c) { ?>
+                <?php if (isset($buscar)) { ?>
+                  <a href="*" class="list-group-item list-group-item-action active">
+                  <i class="bi bi-house-fill"></i> Buscar
+                </a>
+              <?php } ?>
+                <?php 
+                if (isset($categoria_id)) {
+                  if ($categoria_id> 0) {
+                    $resaltar=$categoria_id;
+                }else {
+                  $resaltar=0;
+                    }
+                }else{
+                    $resaltar=0;       
+                }
+                foreach($categorias as $c) { ?>
                   <a href="<?php echo site_url("catalogo/categeria/".$c["categoria_id"])?>" class="list-group-item list-group-item-action"><?php echo $c["nombre"];?></a>
                 <?php } ?>
               </div>
             </div>
             <div class="col-10 nt-4">
+            <?php if (isset($buscar)) { ?>
+              <h1 class="display-3">Buscando: "<?php echo $buscar ?>"</h1>
+              <?php }else{ ?>
                  <?php if ($categoria_id== 0) { ?>
                 <h1 class="display-3">Catalogo</h1>
                 <?php }else{ ?>
                 <h1 class="display-3"><?php echo $categoria_seleccionada["icono"] ?> <?php echo $categoria_seleccionada["nombre"] ?></h1>
+                 <?php } ?>
                 <?php } ?>
                 <br>
                 <?php if ($productos) { ?>
@@ -42,19 +61,27 @@
                         <?php }else{ ?>
                             <img src="<?php echo base_url("img/sin-imagen.png") ?>" class="img-fluid">
                         <?php } ?>
-                        <td><?php str_pad($p["producto_id"], 5, "0", STR_PAD_LEFT)?> - <?php echo $p["nombre"] ?></td>
+                        <td>
+                          <?php str_pad($p["producto_id"], 5, "0", STR_PAD_LEFT)?> - <?php echo $p["nombre"] ?>
+                          <button type="*" class="btn btn-outline-primary btn-sm">+info</button>
+                        </td>
                         <td class="text-end"><b>$<?php echo $p["costo"] ?></b></td>                    
                       </tr>
                     <?php } ?>
                     </tbody>
                 </table>
                 <?php }else{ ?>
-                  <?php if ($categoria_id>0) { ?>
-                   <div class="alert alert-info">
-                      No hay productos en esta categoria!
-                   </div>
+                  <?php if (isset($buscar)) { ?>
+                      <div class="alert alert-warning">
+                          No hay productos que coincidan con la busqueda!
+                      </div>
+                    <?php }else{ ?>
+                      <?php ($categoria_id>0) ?>
+                        <div class="alert alert-info">
+                         No hay productos en esta categoria!
+                        </div>
+                  <?php } ?>
                  <?php } ?>
-                <?php } ?>
             </div>
         </div>
     </div>

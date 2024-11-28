@@ -2,9 +2,13 @@
 class Productos_model extends CI_Model {
     
     var $categoria_id=false;
+    var $buscar=false;
 
     public function set_categoria($categoria_id=false){
         $this->categoria_id=$categoria_id;
+    }
+    public function set_buscar($buscar=false){
+        $this->buscar=$buscar;
     }
     public function nuevo($data) {
        $this->db->insert('productos', $data);
@@ -20,6 +24,9 @@ class Productos_model extends CI_Model {
     public function listar() {
         if ($this->categoria_id!=false) {
             $this->db->where('categoria_id', $this->categoria_id);
+        }
+        if ($this->buscar!=false) {
+            $this->db->like('nombre', $this->buscar);
         }
         $query = $this->db->get('productos');
         return $query->result_array();
