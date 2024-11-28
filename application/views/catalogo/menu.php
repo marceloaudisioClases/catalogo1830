@@ -9,24 +9,11 @@
         <li class="nav-item">
           <a class="nav-link active" href="#"><i class="bi bi-house-fill"></i> Inicio</a>
         </li>
-        <?php
-        if($this->session->userdata("rol_id")==ROL_ADMIN){
-        ?>
-            <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            <i class="bi bi-gear-fill"></i> Administración
-            </a>
-            <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#"><i class="bi bi-people-fill"></i> Usuarios</a></li>
-                <li><a class="dropdown-item" href="#"><i class="bi bi-person-fill-lock"></i> Roles</a></li>
-                <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="<?php echo site_url("categorias"); ?>"><i class="bi bi-box"></i> Categorias</a></li>
-            </ul>
-            </li>
-        <?php 
-        }
-        ?>
       </ul>
+      <form class="d-flex" role="search" method="POST" action="<?php echo site_url("catalogo/buscar"); ?>">
+        <input class="form-control me-2" type="text" placeholder="Ej: Modelo" name="buscar" value="<?php echo (isset($buscar))?$buscar:"";?>">
+        <button class="btn btn-primary" type="submit">Buscar</button>
+      </form>
       <ul class="navbar-nav ms-auto">
             <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
