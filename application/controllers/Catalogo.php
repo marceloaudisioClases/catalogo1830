@@ -60,7 +60,13 @@ class Catalogo extends CI_Controller {
 			redirect("catalogo");
 		}
 	}
-	public function ver($producto_id){
+	public function ver($producto_id,$nombre,$descripcion){
+       $ver=$this->input->where("producto_id", $producto_id,"nombre", $nombre, "descripcion", $descripcion);
+	   if (strlen($ver)> 0) {
+		redirect("catalogo/ver/".$ver);
+	   }else {
+		redirect("catalogo");
+	   }
 
 	}
 }
