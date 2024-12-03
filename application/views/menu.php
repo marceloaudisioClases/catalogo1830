@@ -9,6 +9,9 @@
         <li class="nav-item">
           <a class="nav-link active" href="<?php echo site_url("principal"); ?>"><i class="bi bi-house-fill"></i> Inicio</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link" href="<?php echo site_url("catalogo"); ?>" target="_blank"><i class="bi bi-cart3"></i> Catálogo</a>
+        </li>
         <?php
         if($this->session->userdata("rol_id")==ROL_ADMIN){
         ?>
