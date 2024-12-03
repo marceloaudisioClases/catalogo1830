@@ -13,7 +13,7 @@ class Productos extends CI_Controller {
 	}
 	public function index()
 	{
-		redirect("productos/alta");
+		redirect("productos/listar");
 	}
 	public function alta() {
 		$datos=array();
@@ -83,5 +83,20 @@ class Productos extends CI_Controller {
 			$this->session->set_flashdata('MSJ','Actualizado');
 			redirect("productos/editar/".$producto_id);
 		}
+	}
+
+	public function listar(){
+		$datos=array();
+		$campos_permitidos=array("producto_id","costo","nombre");
+		$partes=$this->uri->uri_to_assoc();
+		if(isset($partes["orden"])){
+			if(in_array($partes["orden"],$campos_permitidos)){
+				$this->productos_model->set_campo_orden($partes["orden"]);
+			}
+		}
+				
+		$datos["productos"]=$this->productos_model->listar();
+
+		$this->load->view('productos/listado',$datos);
 	}
 }
