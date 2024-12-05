@@ -14,13 +14,71 @@
     <div class="container">
         <div class="row">
             <div class="col">
-            <h1 class="display-1">Lista de Usuarios:</h1>
-                        <div class="list-group">
-                <?php foreach($usuarios as $u) { ?>
-                  <a href="#" class="list-group-item list-group-item-action"><?php echo $u["usuario"];?></a>
-                <?php } ?>
-                </div>
+            <h1 class="display-1">Lista de Usuarios:
+              <span class="float-end">
+                <a href="#" class="btn btn-primary"><i class="bi bi-plus-circle"></i> Nuevo</a>
+              </span>
+            </h1>
+                <table class="table">
+                <thead>
+                    <tr>
+                    <th class="col-sm-1">
+                    <a href="<?php echo site_url("usuarios/listar/orden/usuario_id");?>">ID</a>
+                    </th>
+                    <th>
+                    <a href="<?php echo site_url("usuarios/listar/orden/usuario");?>">Usuario</a>
+                    </th>
+                    <th>
+                    <a href="<?php echo site_url("usuarios/listar/orden/nombre");?>">Nombre</a>
+                    </th>
+                    <th>
+                    <a href="<?php echo site_url("usuarios/listar/orden/apellido");?>">Apellido</a>
+                    </th>
+                    <th>
+                    <a href="<?php echo site_url("usuarios/listar/orden/email");?>">Email</a>
+                    </th>
+                    <th>
+                    <a href="<?php echo site_url("usuarios/listar/orden/rol_id");?>">Rol</a>
+                    </th>
+                    <th class="col-sm-2 text-end">
+                    <a href="<?php echo site_url("usuarios/listar/orden/ult_login");?>">Último inicio</a>
+                    </th>
+                    <th>
+                    <a href="<?php echo site_url("usuarios/listar/orden/estado");?>">Estado</a>
+                    </th>
+                    <th scope="col">&nbsp;</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php foreach($usuarios as $u){ ?>
+                        <tr>
+                            <th scope="row"><?=str_pad($u["usuario_id"],5,"0",STR_PAD_LEFT)?></th>
+                            <td><?=$u["usuario"]?></td>
+                            <td><?=$u["nombre"]?></td>
+                            <td><?=$u["apellido"]?></td>
+                            <td><?=$u["email"]?></td>
+                            <td><?=$u["rol_nombre"]?></td>
+                            <td class="text-end"><?=$u["ult_login"]?></td>
 
+                              <?php switch ($u["estado"]) {
+                                case '1':
+                                  echo "<td>Activo</td>";
+                                  break;
+                                case '0':
+                                  echo "<td>Inactivo</td>";
+                                  break;
+                                case '-1':
+                                  echo "<td>Pendiente</td>";
+                                  break;
+                              }?>
+                            
+                            <td class="text-end">
+                             <a href="#" class="btn btn-primary btn-sm" title="Editar"><i class="bi bi-pencil-fill"></i></a>
+                            </td>
+                        </tr>
+                    <?php } ?>
+                </tbody>
+                </table>
             </div>
         </div>
     </div>
