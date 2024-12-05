@@ -7,7 +7,7 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" href="#"><i class="bi bi-house-fill"></i> Inicio</a>
+          <a class="nav-link active" href="<?php echo site_url("catalogo/categoria"); ?>"><i class="bi bi-house-fill"></i> Inicio</a>
         </li>
       </ul>
       <form class="d-flex" role="search" method="POST" action="<?php echo site_url("catalogo/buscar"); ?>">
@@ -16,11 +16,11 @@
       </form>
       <ul class="navbar-nav ms-auto">
             <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <a class="nav-link dropdown-toggle" href="catalogo/prinicpal" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             <i class="bi bi-person-circle"></i> <?php echo $this->session->userdata("nombre")." ".$this->session->userdata("apellido") ?>
             </a>
             <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="<?php echo site_url("principal/micuenta"); ?>"><i class="bi bi-briefcase-fill"></i> Mi cuenta</a></li>
+                <li><a class="dropdown-item" href="<?php echo site_url("principal/micuentacliente"); ?>"><i class="bi bi-briefcase-fill"></i> Mi cuenta</a></li>
                 <li><hr class="dropdown-divider"></li>
                 <li><a class="dropdown-item" href="<?php echo site_url("auth/logout"); ?>"><i class="bi bi-door-open-fill"></i> Salir</a></li>
             </ul>
