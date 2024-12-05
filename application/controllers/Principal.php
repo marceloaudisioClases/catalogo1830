@@ -35,4 +35,23 @@ class Principal extends CI_Controller {
 			redirect("principal/micuenta");
 		}
 	}
+	public function micuentacliente()
+	{
+		$this->load->library('form_validation');
+
+		$this->form_validation->set_rules("password","Contraseña","required");
+		$this->form_validation->set_rules("conf-password","Confirmar Contraseña","matches[password]");
+
+		if ($this->form_validation->run() == FALSE){
+            $this->load->view('catalogo/micuenta');
+        }else{
+			$this->load->model("usuarios_model");
+			$usuario_id= $this->session->userdata("usuario_id");
+			$password=set_value("password");
+			$this->usuarios_model->actualizar_password($usuario_id,$password);
+			$this->session->set_flashdata("OP","CAMBIAPASS");
+			redirect("principal/micuentacliente");
+
+		}
+	}
 }
