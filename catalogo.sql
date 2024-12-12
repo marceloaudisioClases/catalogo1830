@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 12-12-2024 a las 22:51:01
+-- Tiempo de generación: 12-12-2024 a las 23:07:01
 -- Versión del servidor: 10.4.27-MariaDB
 -- Versión de PHP: 7.4.33
 
@@ -20,6 +20,26 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `catalogo`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `api_log`
+--
+
+CREATE TABLE `api_log` (
+  `api_log_id` int(11) NOT NULL,
+  `usuario_id` int(11) NOT NULL,
+  `metodo` text NOT NULL,
+  `fecha` datetime NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `api_log`
+--
+
+INSERT INTO `api_log` (`api_log_id`, `usuario_id`, `metodo`, `fecha`) VALUES
+(2, 1, 'producto_actualizar_precio', '2024-12-12 19:05:58');
 
 -- --------------------------------------------------------
 
@@ -68,7 +88,7 @@ CREATE TABLE `productos` (
 --
 
 INSERT INTO `productos` (`producto_id`, `nombre`, `descripcion`, `categoria_id`, `stock_actual`, `stock_min`, `costo`, `estado`) VALUES
-(1, 'S24 Ultra', 'Samsung IA\r\nTiene 12Gb RAM\r\n512GB MEM', 2, 0, 0, '2000000.00', 1),
+(1, 'S24 Ultra', 'Samsung IA\r\nTiene 12Gb RAM\r\n512GB MEM', 2, 0, 0, '99999999.00', 1),
 (2, 'Xiaomi Redmi Note 13 Pro', '4G Dual SIM 256 GB negro 8 GB RAM', 5, 0, 0, '427000.00', 1),
 (3, 'Iphone 16 Pro Max', 'Chip A18 Pro\r\nNeural Engine de 16 núcleos\r\nApple Intelligence\r\n1 TB', 4, 0, 0, '1600000.00', 1),
 (4, 'Motorola E22', 'Celular casi nuevo, poco uso\r\n4 GB\r\n64Gb\r\nFunda incluida', 3, 1, 1, '245290.00', 1),
@@ -130,6 +150,12 @@ INSERT INTO `usuarios` (`usuario_id`, `email`, `apellido`, `nombre`, `usuario`, 
 --
 
 --
+-- Indices de la tabla `api_log`
+--
+ALTER TABLE `api_log`
+  ADD PRIMARY KEY (`api_log_id`);
+
+--
 -- Indices de la tabla `categorias`
 --
 ALTER TABLE `categorias`
@@ -156,6 +182,12 @@ ALTER TABLE `usuarios`
 --
 -- AUTO_INCREMENT de las tablas volcadas
 --
+
+--
+-- AUTO_INCREMENT de la tabla `api_log`
+--
+ALTER TABLE `api_log`
+  MODIFY `api_log_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `categorias`

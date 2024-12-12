@@ -25,7 +25,7 @@ class Api extends CI_Controller {
 	}
 
 	public function producto_actualizar_precio(){
-		if($this->validar_apikey()){
+		if($this->validar_apikey("producto_actualizar_precio")){
 			$this->output->set_content_type("application/json");
 			
 			$datos=$this->input->post();
@@ -47,11 +47,12 @@ class Api extends CI_Controller {
 		$this->output->set_output(json_encode($this->json));
 	}
 
-	private function validar_apikey(){
+	private function validar_apikey($metodo="NO DEF"){
 		$apikey=$this->input->get_request_header("X-API-KEY");
 		if(isset($apikey)){
-			$apikey_usuario=$this->api_model->obtener_por_apikey($apikey)
+			$apikey_usuario=$this->api_model->obtener_por_apikey($apikey);
 			if($apikey_usuario){
+				$this->api_model->nuevo_evento($apikey_usuario["usuario_id"],$metodo);
 				return true;
 			}else{
 				$this->output->set_status_header(403);
