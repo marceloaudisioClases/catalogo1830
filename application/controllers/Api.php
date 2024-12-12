@@ -3,6 +3,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Api extends CI_Controller {
 	var $json=array("status"=>"ERROR","message"=> "");
+	function __construct(){
+		parent::__construct();
+		$this->load->model("api_model");
+	}
 
 	public function listadeprecios(){
 		$this->load->model("productos_model");
@@ -46,7 +50,8 @@ class Api extends CI_Controller {
 	private function validar_apikey(){
 		$apikey=$this->input->get_request_header("X-API-KEY");
 		if(isset($apikey)){
-			if($apikey=="123456"){
+			$apikey_usuario=$this->api_model->obtener_por_apikey($apikey)
+			if($apikey_usuario){
 				return true;
 			}else{
 				$this->output->set_status_header(403);
