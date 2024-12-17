@@ -17,7 +17,19 @@
               
                 <h1>Listado de productos:
                     <span class="float-end">
+                    
+                        
                         <a href="<?php echo site_url("productos/alta"); ?>" class="btn btn-primary"><i class="bi bi-plus-circle"></i> Nuevo</a>
+                        
+                        <div class="dropdown">
+                            <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Herramientas
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="<?php echo site_url("productos/exportar_csv");?>">Exportar CSV</a></li>
+                            </ul>
+                        </div>
+                        
                     </span>
                 </h1>
                 <table class="table">

@@ -99,4 +99,24 @@ class Productos extends CI_Controller {
 
 		$this->load->view('productos/listado',$datos);
 	}
+
+	public function exportar_csv(){
+		$this->load->helper("download");
+		$datos=$this->productos_model->listar();
+		$archivo="datos-exportados-".date("d-m-Y").".csv";
+		$titulos=array("Codigo","Nombre","Categoria","Stock Actual","Stock Min","Precio","Estado",);
+		
+		//Agrego los Titulos
+		$contenido=implode(";",$titulos)."\n";
+		
+		//Agrego los datos
+		foreach($datos as $linea){
+			unset($linea["descripcion"]);
+			$linea["categoria_id"]=$linea["categoria_nombre"];
+			unset($linea["categoria_nombre"]);
+			$contenido.= implode(";",$linea)."\n";
+		}
+
+		force_download($archivo,$contenido,"application/csv");
+	}
 }
