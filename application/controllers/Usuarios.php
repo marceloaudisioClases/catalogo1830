@@ -10,6 +10,7 @@ class Usuarios extends CI_Controller {
 			redirect("auth/login");
 		}
 		$this->load->model("usuarios_model");
+		$this->load->model("roles2_model");
 	}
 	public function index()
 	{
@@ -48,5 +49,26 @@ class Usuarios extends CI_Controller {
 		$datos["usuarios"]=$this->usuarios_model->listar();
 
 		$this->load->view('usuarios',$datos);
+	}
+	public function exportar_csv_usuarios(){
+		$this->load->helper("download");
+		$datos=$this->usuarios_model->listar();
+		$datos=$this->roles2_model->listar();
+		$archivo="datos-exportados-".date("d-m-Y").".csv";
+		$titulos=array("Codigo","Email","Apellido","Nombre","Usuario","Password","Estado","Rol","APIKEY");
+		
+		//Agrego los Titulos
+		$contenido=implode(";",$titulos)."\n";
+		
+		//Agrego los datos
+		foreach($datos as $linea){
+			unset($linea["creado"]);
+			unset($linea["ult_login"]);
+			$linea["rol_id"]=$linea["rol_nombre"];
+			unset($linea["rol_nombre"]);
+			$contenido.= implode(";",$linea)."\n";
+		}
+
+		force_download($archivo,$contenido,"application/csv");
 	}
 }

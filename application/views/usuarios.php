@@ -17,6 +17,14 @@
             <h1 class="display-1">Lista de Usuarios:
               <span class="float-end">
                 <a href="#" class="btn btn-primary"><i class="bi bi-plus-circle"></i> Nuevo</a>
+                <div class="dropdown">
+                    <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Herramientas
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="<?php echo site_url("usuarios/exportar_csv_usuarios");?>">Exportar CSV</a></li>
+                    </ul>
+                </div>
               </span>
             </h1>
                 <table class="table">
