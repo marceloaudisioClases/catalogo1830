@@ -20,7 +20,8 @@
             <i class="bi bi-gear-fill"></i> Administración
             </a>
             <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="<?php echo site_url("usuarios"); ?>"><i class="bi bi-people-fill"></i> Usuarios</a></li>
+                <li><a class="dropdown-item" href="<?php echo site_url("usuarios"); ?>"><i class="bi bi-person-bounding-box"></i> Usuarios V2.0</a></li>
+                <li><a class="dropdown-item" href="<?php echo site_url("Usuarioshilet"); ?>"><i class="bi bi-people-fill"></i> Usuarios</a></li>
                 <li><a class="dropdown-item" href="<?php echo site_url("roles"); ?>"><i class="bi bi-person-fill-lock"></i> Roles</a></li>
                 <li><hr class="dropdown-divider"></li>
                 <li><a class="dropdown-item" href="<?php echo site_url("productos"); ?>"><i class="bi bi-box"></i> Productos</a></li>

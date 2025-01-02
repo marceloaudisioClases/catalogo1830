@@ -1,16 +1,5 @@
 <?php
 class Usuarios_model extends CI_Model {
-
-    var $rol_id=false;
-    var $campo_orden="usuarios.usuario_id";
-    var $campo_sentido="ASC";
-    public function set_campo_orden($campo="usuarios.usuario_id"){
-        $this->campo_orden=$campo;
-    }
-    public function set_campo_sentido($sentido= "ASC"){
-        $this->campo_sentido=$sentido;
-    }
-
     public function nuevo($email,$usuario,$password,$nombre,$apellido){
         $this->db->set("email",$email);
         $this->db->set("password",$password);
@@ -53,17 +42,82 @@ class Usuarios_model extends CI_Model {
         $this->db->where("usuario_id",$usuario_id);
         $this->db->update("usuarios");
     }
+
+    
+
+
+
+
+
+
+    
+    //PARTE USUARIOS 
     public function listar(){
-
-        $this->db->select("usuarios.*,roles.nombre AS rol_nombre");
-        if($this->rol_id!=false){
-            $this->db->where('usuarios.rol_id', $this->rol_id);
-        }
-        $this->db->join("roles","usuarios.rol_id=roles.rol_id","inner");
-
-        $this->db->order_by($this->campo_orden,$this->campo_sentido);
-        
+        $this->db->select("*");
+        $this->db->order_by("usuario_id");
+        $this->db->order_by("nombre");
         return $this->db->get("usuarios")->result_array();
     }
-    
+    public function buscarPorRol($rol) 
+{
+    $this->db->like('rol_id', $rol);
+    $busqueda = $this->db->get('usuarios');
+    return $busqueda->result_array();
+}
+
+public function buscarPorNombre($nombre)
+{
+    $this->db->like('nombre', $nombre);
+    $busqueda = $this->db->get('usuarios');
+    return $busqueda->result_array();
+}
+public function buscarPorApellido($apellido)
+{
+    $this->db->like('apellido', $apellido);
+    $busqueda = $this->db->get('usuarios');
+    return $busqueda->result_array();
+}
+public function obtener_usuario_por_id($usuario_id)
+{
+    $query = $this->db->from('usuarios')->where('usuario_id', $usuario_id)->limit(1);
+
+    return $query->row_array(); 
+}
+
+public function actualizar($id, $datos) {
+    $this->db->where('usuario_id', $id);
+    return $this->db->update('usuarios', $datos);
+}
+
+
+public function editar($id) {
+   $usuario = $this->usuarios_model->obtener_usuario_por_id($id);
+   if (!$usuario) {
+        $this->session->set_flashdata('error', 'Usuario no encontrado');
+        redirect('usuarios');
+    }
+    $data = array('usuario', $usuario);
+    $this->load->view('usuarios/editar', $data);
+}
+
+
+public function listar_eliminados() {
+    $this->db->select("*");
+    $this->db->where("estado", -1);
+    $this->db->order_by("fecha_eliminacion", "DESC");
+    return $this->db->get("usuarios")->result_array();
+}
+
+
+public function restaurar_usuario($usuario_id) {
+    $this->db->set('estado', 1);
+    $this->db->where('usuario_id', $usuario_id);
+    return $this->db->update('usuarios');
+}
+
+public function vaciar_motivo_eliminacion($usuario_id) {
+    $this->db->set('motivo_eliminacion', ''); 
+    $this->db->where('usuario_id', $usuario_id);
+    return $this->db->update('usuarios');
+  }
 }
